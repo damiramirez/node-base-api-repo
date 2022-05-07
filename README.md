@@ -36,6 +36,9 @@ NODE_ENV=
 
 # Port
 PORT=
+
+#Log
+LOG_LEVEL=
 ```
 
 ## HOW TO USE
