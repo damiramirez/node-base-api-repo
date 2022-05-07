@@ -1,50 +1,47 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "API REST Base Repo",
-    "description": "This is a base of an API to start a project",
+    "title": "API Rest base repo.",
+    "description": "## This is a base api to start new projects.",
+    "version": "1.0.0",
     "contact": {
       "email": "damianagustinrz@gmail.com"
-    },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-    },
-    "version": "1.0.0"
+    }
   },
-  "servers": [
+  
+  "servers":[
     {
-      "url": "http://localhost:3000/api/v1",
-      "description": "Development"
+      "url":"http://localhost:3000/api/v1",
+      "description": "Desarrollo"  
     },
     {
-      "url": "https://node-basic-apirest.herokuapp.com/api/v1",
-      "description": "Production"
-    }
+      "url":"https://node-basic-apirest.herokuapp.com/api/v1",
+      "description": "Producción"  
+    } 
   ],
-  "tags": [
+  "tags": [    
     {
-      "name": "Users",
-      "description": "Operations about users"
+      "name": "users",
+      "description": "Operations about users."
     }
   ],
-  "paths": {
+  "paths": {    
     "/users/": {
       "get": {
         "tags": [
           "users"
         ],
-        "summary": "Get a list of all users",
-        "description": "",
+        "summary": "Get a list of all existing users.",
+        "description": "",             
         "responses": {
           "200": {
-            "description": "The array of users is in a JSON format.",
+            "description": "The array of users in JSON format.",
             "content": {
-              "application/json": {
-                "schema": {
+              "application/json":{
+                "schema":{
                   "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/User"
+                  "items":{
+                    "$ref": "#/components/schemas/User"                    
                   }
                 }
               }
@@ -56,55 +53,63 @@
         "tags": [
           "users"
         ],
-        "summary": "Create a new User",
+        "summary": "Create a new user.",
         "description": "",
         "requestBody": {
-          "description": "Name of user",
+          "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/User"
+              "schema":{              
+                  "$ref": "#/components/schemas/User"                    
+                }
               }
             }
-          }
-        },
+          },
         "responses": {
           "201": {
-            "description": "User created"
+            "description": "User created."
           }
         }
-      }      
+      }
     },
     "/users/{id}": {
       "put": {
         "tags": [
           "users"
         ],
-        "summary": "Update a existing User",
-        "description": "",
-        "parameters":[ 
+        "summary": "Update an existing user by providing the id.",
+        "description": "",          
+        "parameters":[          
           {
             "name": "id",
             "in": "path",
-            "description": "The id of the user needs to be updated",
+            "description": "The id of the user that needs to be updated.",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type":"integer"
             }
-          }
+          }          
         ],
-        "responses": {
-          "200": {
-            "description": "The user updated.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "items": {
-                    "$ref": "#/components/schemas/User"
-                  }
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema":{              
+                  "$ref": "#/components/schemas/User"                    
                 }
               }
+            }
+          },
+        "responses": {
+          "200": {
+            "description": "The user updated",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "$ref": "#/components/schemas/User" 
+                }
+              }              
             }
           }
         }
@@ -113,23 +118,23 @@
         "tags": [
           "users"
         ],
-        "summary": "Delete a existing User by providing the id.",
+        "summary": "Delete an existing user by providing the id.",
         "description": "",
-        "parameters":[ 
+        "parameters":[          
           {
             "name": "id",
             "in": "path",
-            "description": "The id of the user needs to be deleted.",
+            "description": "The id of the user that needs to be deleted.",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type":"integer"
             }
-          }
-        ],
+          }          
+        ],     
         "responses": {
           "200": {
-            "description": "User deleted"
-          } 
+            "description": "User deleted."
+          }
         }
       }
     }
@@ -142,36 +147,15 @@
         ],
         "type": "object",
         "properties": {
-          "id": {
-            "description": "The user id",
-            "type": "integer",
+          "id":{
+            "description": "The user id.",
+            "type": "integer",          
             "example": "3"
           },
-          "name": {
-            "description" : "The username",
-            "type": "string",
-            "example": "Damian Ramirez"
-          }
-        }
-      },
-      "Manufacturer": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "example": "ACME Corporation"
-          },
-          "homePage": {
-            "type": "string",
-            "format": "url",
-            "example": "https://www.acme-corp.com"
-          },
-          "phone": {
-            "type": "string",
-            "example": "408-867-5309"
+          "name":{
+            "description": "The user name.",
+            "type":"string",          
+            "example":"Adrian"
           }
         }
       }
